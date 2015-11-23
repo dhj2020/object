@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="jquery-1.11.3.min.js" ></script>
+<title></title>
+</head>
+<body>
+	
+<pre id="aa"></pre>
+<pre id="bb"></pre>
+<script>
+var contents={
+	"txt1":"一个温馨的家，总有一台电视在那里，\n陪伴笑谈家常，畅离天伦",
+	"txt2":"我抱着的，是兔兔；我旁边，是爸爸妈妈；\n我们一起看企鹅",
+	"txt3":"电视里，是企鹅；爸爸拿的，却是超人",
+	"txt4":"你在逗我玩吗",
+	"txt5":"岁月无形，我们留不住什么；\n岁月有形，一张沧桑的面孔",
+	"txt6":"我希望，当我们七十岁时，\n我们仍然牵着彼此的手，看早晚新闻",
+	"txt7":"老头子，开电视，跳舞活动活动。\n别动，这个角度不错，拍完先。",
+	"txt8":"无论何时，你都能感受到，\n身边总有一份温暖存在，就那么简单。",
+	"txt9":"酷开A43 温暖陪伴家人",
+}
+//定义打字机
+function show(elem,words){
+	var index=0;
+	setInterval(function(){
+		document.getElementById(elem).innerText = words.substring(0,index);
+		index++
+	}, 200);
+}
+//调用打字机
+show("aa",contents.txt1)
+
+setTimeout(function(){
+	show("bb",contents.txt2)
+},3000)
+
+
+/*遍历对象方法1
+ $.each(contents, function(n,m) {
+	alert(n+":"+m)
+});
+
+遍历对象方法2
+for(var i in contents){
+	alert(contents[i])
+}
+
+*/
+
+</script>
+
+</body>
+</html>
