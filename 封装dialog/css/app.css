@@ -1,0 +1,118 @@
+/****common reset*****/
+html{ font-size: 62.5%;}
+body{ font-size:1rem; background-color: #fff; font-family: "microsoft yahei";}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+.size12{ font-size:1.2rem}
+.size14{ font-size:1.4rem}
+.size16{ font-size:1.6rem}
+.size18{ font-size:1.8rem}
+.size20{ font-size:2.0rem}
+/*********************/
+
+/**header**/
+.ui-header{position:fixed; padding:0;background-color: #171717;}
+.header-home,.header-back{ position: absolute;left: 10px; color:#666;}
+.header-sort{position:absolute; width:38px;height:30px;right:10px; top:7px;text-align: center;line-height: 30px; border-radius:5px;}
+header button:active{background-color:rgba(0,0,0,0.3)!important;}
+.ui-header h1{color: #fff;}
+.ui-header .header-back{color: #fff;}
+.ui-header button{color: #fff;}
+
+/**content**/
+.ui-header~.content{padding-top:45px}
+
+.toUp{ width:40px; height:40px;border-radius:40px; background-color:rgba(255,255,255,.9); border:solid 1px #ccc; position:fixed; z-index:1; right:10px; bottom:20px; display:none; font-size:1rem; text-align:center; color:#666; box-shadow:0 0 3px #ccc}
+.toUp i,.toUp span{ display:block;}
+.toUp span{ margin-top:-3px;}
+
+
+.centerPanel .ui-dialog-hd h1{ font-size: 1.8rem; background: #EF8900; border-top-left-radius: 5px;border-top-right-radius: 5px; color: #fff;}
+.centerPanel .ui-dialog-bd img{ max-width: 120px;}
+.centerPanel .ui-dialog-bd div{ font-size: 1.3rem; color: #999;}
+.centerPanel .ui-dialog-bd div.info{ font-size: 1.6rem; color: #666; text-align: center;}
+.centerPanel .sBtn{ width:130px; height: 40px; color: #fff; background: #EF8900; border-radius:5px; margin: 0 auto; display: block;}
+.centerPanel .ui-dialog-cnt{padding-bottom: 15px;}
+.btnClose{color: #CB4F34;font-size: 3rem;position: absolute;top: 0;right: 8px;}
+
+.footerPanel .ui-dialog-cnt{ position: fixed; width: 90%; bottom: 0; left: 50%; margin-left: -45%; border-bottom-left-radius:0 ;border-bottom-right-radius:0 ;}
+.footerPanel .ui-dialog-hd{ height: 40px; line-height: 4rem; color: #fff;}
+.footerPanel .ui-dialog-hd h1{ font-size: 1.8rem; background: #EF8900; border-top-left-radius: 5px;border-top-right-radius: 5px;}
+.footerPanel .ui-dialog-bd nav{width: 100%; font-size: 1.4rem; position: relative; height: 40px; text-align: left;}
+.footerPanel .ui-dialog-bd nav .txt{background: #EF8900; color: #fff; display:inline-block; height:20px; line-height:2rem;padding: 2px 5px; border-radius: 3px;}
+.footerPanel .ui-dialog-bd nav i{position: absolute;top: 23px;left: 15px; border-color: #EF8900 transparent transparent transparent;border-style: solid;border-width: 8px;}
+.footerPanel .ui-dialog-bd p{ font-size: 1.3rem; line-height: 20px; margin-bottom: 5px; color: #555;}
+
+/**弹窗公用样式 ，慎修改**/
+.ui-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0,0,0,.4);
+    display: none;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+.ui-dialog .ui-dialog-confirm-box,.ui-dialog .ui-dialog-custom-box {
+    position: relative;
+    border-radius: 5px;
+    width: 80%;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    pointer-events: auto;
+    background-color: rgba(253,253,253,.95);
+    font-size: 16px;
+}
+.ui-dialog .ui-dialog-confirm-box i.icon-close,.ui-dialog .ui-dialog-custom-box i.icon-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #666;
+    z-index: 1000;
+}
+.ui-dialog .ui-dialog-confirm-box header{
+    font-size: 1.6rem;
+    height: 45px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #eee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: solid 1px #e0e0e0;
+}
+.ui-dialog section.tips{ padding: 10px 15px; border-radius: 3px;background-color:#fff;font-size: 1.6rem;}
+.ui-dialog .ui-dialog-confirm-box article,.ui-dialog .ui-dialog-custom-box article{
+    width: 90%;
+    padding: 5%;
+    line-height: 25px;
+}
+.ui-dialog .ui-dialog-confirm-box footer{
+    width: 100%;
+    border-top: solid 1px #e0e0e0;
+    line-height: 25px;
+    display: -webkit-box;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+}
+.ui-dialog .ui-dialog-confirm-box footer button:first-child {
+    border-right: 1px #e0e0e0 solid;
+    border-bottom-left-radius: 6px;
+}
+.ui-dialog .ui-dialog-confirm-box footer button {
+    color: #00a5e0;
+    text-align: center;
+    width: 100%;
+    line-height: 40px;
+    background: transparent;
+    display: block;
+    font-size: 16px;
+    margin: 0!important;
+    -webkit-box-flex: 1;
+}
+

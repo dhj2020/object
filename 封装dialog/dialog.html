@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>弹出层组件</title>
+        <link rel="stylesheet" type="text/css" href="css/frame.css" />
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
+        <link rel="stylesheet" type="text/css" href="font/ui-font.css" />
+        <style>
+        .ck{font-size:2rem}
+        section{margin:50px auto;text-align:center}
+        section button{display:block;margin:20px auto}
+        .addressInfo{width:100%;margin:0 auto 20px}
+        .addressInfo table{width:100%}
+        .addressInfo table td{line-height:45px;color:#666;font-size:1.4rem;border-bottom:solid 1px #e0e0e0}
+        .addressInfo table td:nth-child(1){width:27%;text-align:right}
+        .addressInfo table td:nth-child(2){width:60%}
+        .addressInfo table td input{border:0;line-height:30px;width:93%;margin-left:10px;background:0 0}
+        .addressInfo .safeBtn{background:red;color:#fff;font-size:1.6rem;padding:8px 10px;border-radius:3px;margin:20px auto 0;display:block}
+        .tips h1{font-size:1.6rem;color:#B7440E}
+        .tips p{font-size:1.2rem;line-height:20px;color:#666;margin-bottom:15px}
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <button class="ck">常规自定义弹出层样式一</button>
+            <button class="ck">confirm带内容弹出层样式二</button>
+            <button class="ck">确定取消弹出层样式三</button>
+            <button class="ck">说明弹出层样式四</button>
+            <button class="ck">提示弹出层样式五</button>
+        </section>
+        <div class="addressInfo" style="display: none;">
+            <table>
+                <tr>
+                    <td>收件人：</td>
+                    <td><input type="text" placeholder="您的姓名" /></td>
+                </tr>
+                <tr>
+                    <td>手机号码：</td>
+                    <td><input type="text" placeholder="请填写手机号码" /></td>
+                </tr>
+                <tr>
+                    <td>邮政编码：</td>
+                    <td><input type="text" placeholder="填写邮政编码" /></td>
+                </tr>
+                <tr>
+                    <td>详细地址：</td>
+                    <td><input id="areaSelect" type="text" readonly="" name="input_area" placeholder="请选择具体省、市" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="text" placeholder="小区详细地址" /></td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+            <button class="safeBtn sBtn">领取奖品</button>
+        </div>
+
+        <div class="tips" style="display: none;">
+            <h1>活动内容</h1>
+            <p>会员信息100%完整，即可获赠20元产品抵用券；活动期间，新、老会员完善个人信息资料完整度达100%，即可获赠20元产品抵用券，共2000份，先到先得，送完为止。</p>
+            <h1>参与方式</h1>
+            <p>会员认证，即可获赠20元/50元产品抵用券;会员认证：活动期间，通过“关联保单“功能在线关联一张寿险长险保单或车险保单，进行会员认证成功， 即获得20元产品抵用券，共2000份，先到先得，送完为止。高级会员认证：活动期间，通过“高级会员认证“功能在线进行高级会员认证成功，且通过人工审核后将获 得50元产品抵用券，共500份，先到先得，送完为止。</p>
+        </div>
+        <p style="height: 2000px;"></p>
+        <script src="js/zepto.min.js"></script>
+        <script src="js/comm.js"></script>
+        <script>
+            Zepto(function() {
+                $(".ck").eq(0).click(function() {
+                    showPannel.customHtml(".addressInfo")
+                });
+                $(".ck").eq(1).click(function() {
+                    showPannel.confirm({
+                        isHeader: true,
+                        title: "是否清除页面内容",
+                        isButton: true,
+                        content: "受美联储加息预期影响，美元指数大涨，加之英镑“闪崩”事件造成全球避险情绪上升，离岸人民币汇率跟随“闪崩”。这都增加了人民币汇率贬值预期，在岸人民币汇率也因此承压！",
+                    })
+                });
+                $(".ck").eq(2).click(function() {
+                    showPannel.confirm({
+                        isHeader: false,
+                        content: "是否确定删除？",
+                    })
+                });
+                $(".ck").eq(3).click(function() {
+                    showPannel.confirm({
+                        isHeader: true,
+                        herderColor: "#FFAA25",
+                        title: "活动说明",
+                        isButton: false,
+                        content: $(".tips"),
+                    })
+                });
+                $(".ck").eq(4).click(function() {
+                    showPannel.tipShow("操作成功，1秒后自动关闭！")
+                });
+            })
+        </script>
+    </body>
+</html>
