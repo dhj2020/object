@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>react入门(3)</title>
+    <meta charset="utf-8">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+    .btn{ color: #fff; background-color: #000; border: none; padding: 6px 8px; margin-left:10px  }
+    input{ height: 24px; padding: 0 10px; }
+    </style>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var Test = React.createClass({
+            render:function(){
+                return (
+                    <div>
+                        {
+                            React.Children.map(this.props.children, function(child,index) {
+                                return <p>序号{index}：{child}</p>;
+                            })
+                        }
+                    </div>
+                )
+            }
+        });
+    
+        var Box = React.createClass({
+            render:function(){
+                return(
+                    <Test>
+                        <span>电影</span>
+                        <span>电视剧</span>
+                        <span>综艺</span>
+                    </Test>
+                )
+            }
+        });
+        ReactDOM.render(
+            <Box />,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

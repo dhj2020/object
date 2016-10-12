@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+	*{ margin: 0; padding: 0;}
+	ul,li{ list-style: none;}	
+	img{ display: block; border: 0;}
+	.wrap{width: 880px; height: 60px; margin: 0 auto; overflow: hidden; position: relative; }	
+	ul{ width: 5000px; height: 60px;}
+	li{ width: 120px; height: 60px; margin: 0 10px; float: left; font-size: 3em; text-align: center; line-height: 60px; background: #72D1FF;}
+	.wrap .btn_left,.wrap .btn_right{position: absolute; top: 50%; width: 40px; height: 40px; background: rgba(0,0,0,.5); margin-top: -20px; font-size: 30px; text-align: center; line-height: 40px; color: #fff; font-weight: bold; cursor: pointer;}
+	.wrap .btn_left{left: 0; }
+	.wrap .btn_right{ right: 0;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(".wrap").imgscroll({
+		speed: 10,    //图片滚动速度
+		amount: 0,    //图片滚动过渡时间
+		width: 1,     //图片滚动步数
+		dir: "left"   // "left" 或 "up" 向左或向上滚动
+	});
+});
+
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+</script>
+
+</head>
+<body>
+
+<div class="wrap">
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+</body>
+</html>

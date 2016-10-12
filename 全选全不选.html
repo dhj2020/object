@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全选/全不选</title>
+<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$(".btn1").click(function(){ 
+		$("input[type='checkbox']").prop("checked",true).attr("checked","checked")
+	})	
+	$(".btn2").click(function(){ 
+		$("input[type='checkbox']").prop("checked",false).removeAttr("checked")	
+	})
+})
+</script>
+</head>
+
+<body>
+
+<button class="btn1">全选</button>
+<button class="btn2">取消选择</button>
+<input type="checkbox" /><label>01</label>
+<input type="checkbox" /><label>02</label>
+<input type="checkbox" /><label>03</label>
+<input type="checkbox" /><label>04</label>
+<input type="checkbox" /><label>05</label>
+<input type="checkbox" /><label>06</label>
+<input type="checkbox" /><label>07</label>
+<input type="checkbox" /><label>08</label>
+
+</body>
+</html>

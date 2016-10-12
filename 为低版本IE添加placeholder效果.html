@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        /*
+         * 为低版本IE添加placeholder效果
+         *
+         * 使用范例：
+         * [html]
+         * <input id="captcha" name="captcha" type="text" placeholder="验证码" value="" >
+         * [javascrpt]
+         * $("#captcha").nc_placeholder();
+         *
+         *
+         */
+        (function($) {
+            $.fn.nc_placeholder = function() {
+                var isPlaceholder = 'placeholder' in document.createElement('input');
+                return this.each(function() {
+                    if(!isPlaceholder) {
+                        $el = $(this);
+                        $el.focus(function() {
+                            if($el.attr("placeholder") === $el.val()) {
+                                $el.val("");
+                            }
+                        }).blur(function() {
+                            if($el.val() === "") {
+                                $el.val($el.attr("placeholder"));
+                            }
+                        }).blur();
+                    }
+                });
+            };
+        })(jQuery);
+
+        //使用插件
+        $(function(){
+            $("#pdr").nc_placeholder();
+        })
+
+    </script>
+</head>
+<body>
+<input id="pdr" placeholder="请输入密码">
+
+</body>
+</html>

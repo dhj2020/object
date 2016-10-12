@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{ message }}</p>
+  <input type="text" v-model="message">
+</div>
+
+<h1>
+  {{add}}
+  <input type="text" v-model="add">
+</h1>
+<h2>
+  {{fb}}
+  <input type="text" v-model="fb">
+</h2>
+
+<script>
+  //闭包
+  function x(){
+    var n= "我是副标题h2" ;
+    function b(){
+      return n;
+    }
+    return b
+  }
+  a = x();
+
+  //双向绑定
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js!',
+    }
+  });
+  new Vue({
+    el: 'h1',
+    data: {
+      add: "我是标题h1",
+    }
+  });
+  new Vue({
+    el: 'h2',
+    data: {
+      fb: a(),
+    }
+  })
+
+</script>
+</body>
+</html>

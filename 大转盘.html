@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <title>大转盘活动</title>
+        <style>
+            section{
+                width: 300px;
+                height: 300px;
+                border-radius: 150px;
+                background-color: red;
+                margin:100px auto;
+                background: url("http://pic.qiantucdn.com/58pic/18/30/30/39f58PIC7XT_1024.jpg") no-repeat center center;
+                background-size: cover;
+            }
+            button{ text-align: center; font-size: 1.2rem;display: block; margin: 0 auto}
+        </style>
+    </head>
+
+    <body>
+        <section></section>
+        <button>旋转</button>
+        <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>  
+        <script>
+        $(function(){
+            var i = 10;
+            var gold=['一等奖','二等奖','三等奖','四等奖','五等奖','六等奖','七等奖','八等奖'];
+            var degree = 360/gold.length;
+            $("button").click(function(){
+                var random = Math.round(Math.random()*2+5);
+                var rotateDegree = parseInt(Math.random()*gold.length+1)*degree;
+                var currentIndex = rotateDegree/(360/gold.length)-1;
+                var allRotateDegree = random*360+rotateDegree;
+                $("section").css({"-webkit-transform":"rotate(0deg)","-webkit-transition":"all 0s"});
+                if(i<=0){
+                    alert("次数用完");
+                }else{
+                    setTimeout(function(){
+                        $("section").css({"-webkit-transform":"rotate("+allRotateDegree+"deg)","-webkit-transition":"all 3s ease-in-out"});
+                        setTimeout(function(){
+                            getGold(currentIndex,gold);
+                        },3000);
+                    },1); 
+                }
+                i--;   
+            });
+
+            //返回奖品
+            function getGold(index,obj){
+                switch(index){
+                    case index:
+                        return alert(obj[index]);
+                    break;
+                }
+            }
+        })
+        </script>
+    </body>
+</html>

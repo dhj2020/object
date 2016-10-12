@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处理用户输入</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <from id="login">
+        <label>{{userName}}</label><input type="text" name="user" placeholder={{placeholderUserName}} v-model="userVal" />
+        <label>{{userPassword}}</label><input type="password" name="password" placeholder={{placeholderuserPassword}}>
+        <button v-on:click="getUser">提交</button>
+    </from>
+    <script>
+    /*
+    document.getElementsByTagName("button")[0].onclick=function(){
+        var val = document.getElementsByName("user")[0].value;
+        alert(val)
+    }*/
+    
+    new Vue({
+        el:"#login",
+        data:{
+            userName:"用户名：",
+            placeholderUserName:"请输入用户名",
+            userPassword:"密码：",
+            placeholderuserPassword:"请输入密码",
+            userVal:document.getElementsByName("user")[0].value
+        },
+        methods:{
+            getUser:function(){
+                alert("用户名："+this.userVal+"\n密码是："+document.getElementsByName("password")[0].value.trim(' '))
+            }
+        }
+    })
+    </script>
+</body>
+</html>

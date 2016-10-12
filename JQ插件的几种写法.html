@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ插件的几种写法</title>
+    <script src="http://www.web92.net/wp-content/themes/weisay_heibai/js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        //方法1：JQuery扩展本身
+        ;(function($){
+            $.extend({
+                fontStyle : function(opt){
+                    var thisText = $(opt);
+                    thisText.hover(function(){
+                        $(this).css({ color: "#ff0011", fontSize: "60px" })
+                    },function(){
+                        $(this).css({ color: "#000", fontSize: "40px" })
+                    })
+                }
+            })
+        })(jQuery)
+
+        //方法2：对HTML标记或页面元素进行扩展
+        ;(function ($) {
+            $.fn.setTableUI = function(options){
+                var defaults = {
+                    evenRowClass:{color: "#ff0011", background: "blue", fontSize: "30px"},
+                    activeRowClass:{color: "#fff", background: "green"}
+                }
+                var options = $.extend(defaults, options);
+                this.each(function(){
+                    var thisTable=$(this);
+                    $(thisTable).find("tr").bind("mouseover", function () {
+                        $(this).css(options.evenRowClass);
+                    });
+                    $(thisTable).find("tr").bind("mouseout", function () {
+                        $(this).css(options.activeRowClass);
+                    });
+                });
+            };
+        })(jQuery)
+
+        ;(function ($) {
+            $.fn.userCpr = function(options) { //定义插件的名称，这里为userCp
+                var defaults = {
+                    //以下为该插件的属性及其默认值
+                    name: "hanjun", //版权所有者
+                    url: "http://www.hao123.com", //所有者链接
+                    size: "12px", //版权文字大小
+                    align: "left" //版权文字位置，left || center || right
+                };
+                var ops = $.extend(defaults,options);
+                var style = 'style="font-size:' + ops.size + ';text-align:' + ops.align + ';"'; //调用默认的样式
+                var cpTxt = '<p' + ' ' + style + '>此文章版权归<a target="_blank" href="' + ops.url + '">' + ops.name + '</a>所有</p>'; //生成版权文字的代码
+                $(this).append(cpTxt); //把版权文字加入到想显示的div
+            }
+        })(jQuery);
+
+        //方法3：通过直接添加JQuery插件脚本引用，实现对该插件的调用
+        ;(function ($) {
+            $.yuanUI = { set: function (opt) {
+                var thisTable = $(opt);
+                $(thisTable).bind("mouseover", function () {
+                    $(this).css({ color: "#ff0011", background: "blue" });
+                });
+                $(thisTable).bind("mouseout", function () {
+                    $(this).css({ color: "#000000", background: "indianred" });
+                });
+                }
+            };
+        })(jQuery);
+
+        //对插件的调用
+        $(function(){
+            $.fontStyle("h1,h2");
+            $("#newTable").setTableUI();
+            $("footer").userCpr({align:"center",size:"18px"});
+            $.yuanUI.set(".yuan");
+        })
+    </script>
+</head>
+<body>
+<h1 align="center">我是标题</h1>
+<h2 align="center">我是副标题</h2>
+
+<section class="yuan" style="width:100px; height: 100px; background: indianred; margin: 0 auto;"></section>
+
+<table id="newTable" align="center">
+    <tr>
+        <td>1</td><td>1</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>1</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>1</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>1</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>1</td><td>1</td>
+    </tr>
+</table>
+<footer></footer>
+</body>
+</html>

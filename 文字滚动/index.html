@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<style>
+	.wrap,.wrap2{ width: 340px; padding: 0 30px; height: 200px; background:rgba(0,0,0,.1); margin: 0 auto; overflow: hidden;}
+	ul,li{margin: 0;padding: 0;}
+	li{ width: 100%; height: 40px; line-height: 40px;}	
+</style>
+<script src="js/jquery-1.11.3.min.js" ></script>
+<script>
+$(function(){
+	//自定义文本向上滑动  （说明：speed为滑动的速度，delay为延迟时间，n为li滚动的条数）
+	function slidetxt(elemt,speed,delay,n){
+		$(elemt).hover(function(){
+			clearInterval(timer)
+		},function(){
+			timer = setInterval(function(){
+				var $ul = $(elemt+" ul")
+				var _height = $ul.find("li").height()
+				$ul.animate({"margin-top":-_height*n+"px"},speed,function(){
+					$ul.children("li").slice(0,n).appendTo($ul)
+					$ul.css({"margin-top":0}); 
+				})
+			},delay)
+		}).trigger("mouseleave"); 
+	}
+	//调用文本滑动
+	slidetxt(".wrap",1000,3000,1)
+	slidetxt(".wrap2",1000,3000,2)
+})
+</script>
+<body>
+	
+<div class="wrap">
+	<ul>
+		<li>又到12点，是时候睡觉艾丝凡松岛枫撒旦飞洒</li>
+		<li>社会真现实 hu569 : 社会真现实</li>
+		<li>明天要上班咯: 明天要上班咯</li>
+		<li>中国下潜3000米海底水下机器人真容曝光 </li>
+		<li>天气不错 dhj2020 : 天气不错</li>
+		<li>地方刚地方后鬼地方东莞辅导和东方红让头发后</li>
+		<li>上的提高速度快跟有对人好费挂号费个发给</li>
+	</ul>
+</div>	
+<p></p>
+<div class="wrap2">
+	<ul>
+		<li>又到12点，是时候睡觉艾丝凡松岛枫撒旦飞洒</li>
+		<li>社会真现实 hu569 : 社会真现实</li>
+		<li>明天要上班咯: 明天要上班咯</li>
+		<li>中国下潜3000米海底水下机器人真容曝光 </li>
+		<li>天气不错 dhj2020 : 天气不错</li>
+		<li>地方刚地方后鬼地方东莞辅导和东方红让头发后</li>
+		<li>上的提高速度快跟有对人好费挂号费个发给</li>
+	</ul>
+</div>	
+</body>
+</html>

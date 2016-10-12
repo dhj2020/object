@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS提示</title>
+		<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<style>
+		.bubble_tips {
+			display: inline-block;
+			vertical-align: middle;
+			position: absolute;
+			color: #8d8d8d;
+		}
+		.bubble_tips_inner {
+			padding: 4.5px 10px;
+			border: 1px solid #e7e7eb;
+			line-height: 21px;
+			background-color: #fff;
+			word-wrap: break-word;
+			word-break: break-all;
+		}
+		.bubble_tips_arrow {
+			position: absolute;
+			top: 50%;
+			margin-top: -6px;
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-width: 6px;
+			border-style: dashed;
+			border-color: transparent;
+			border-left-width: 0;
+			border-right-color: #fff;
+			border-right-style: solid;
+		}
+		.bubble_right {
+			top: 80px;
+		}
+		.bubble_right .bubble_tips_arrow {
+			border-left-width: 6px;
+			border-right-color: transparent;
+			border-right-style: dashed;
+			border-right-width: 0;
+			border-left-color: #fff;
+			border-left-style: solid;
+		}
+		.bubble_right .bubble_tips_arrow.out {
+			border-left-color: #e7e7eb;
+			right: -6px;
+		}
+		.bubble_right .bubble_tips_arrow.in {
+			right: -5px;
+		}
+		
+		/*-------------------------------------*/
+		
+		.bubble_top {
+			margin-top: 0;
+		}
+		.bubble_top .bubble_tips_arrow {
+			border-left-width: 6px;
+			border-right-color: transparent;
+			border-right-style: dashed;
+			border-right-width: 0;
+			border-left-color: #fff;
+			border-left-style: solid;
+		}
+		.bubble_top .bubble_tips_arrow.out{
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border: 8px dashed transparent;
+			border-top-width: 0;
+			border-bottom-color: #d3d3d3;
+			border-bottom-style: solid;
+			top: -1px;
+			left: 50%;
+		}
+		.bubble_top .bubble_tips_arrow.in{
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border: 8px dashed transparent;
+			border-top-width: 0;
+			border-bottom-color: #fff;
+			border-bottom-style: solid;
+			top: 0;
+			left: 50%;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="bubble_tips bubble_right">
+			<div class="bubble_tips_inner">
+				温馨提示：这是最新的提示信息！
+			</div>
+			<i class="bubble_tips_arrow out"></i>
+			<i class="bubble_tips_arrow in"></i>
+		</div>
+		
+		<div class="bubble_tips bubble_top">
+			<div class="bubble_tips_inner">
+				温馨提示：这是最新的提示信息！
+			</div>
+			<i class="bubble_tips_arrow out"></i>
+			<i class="bubble_tips_arrow in"></i>
+		</div>
+	</body>
+</html>

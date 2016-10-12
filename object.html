@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+//1、工厂模式
+	function person1(name,age,getName){
+		var o = new Object();
+		o.name = "hanjun";
+		o.age = 26;
+		o.getName = function(){
+			return this.name
+		}
+		return o
+	}
+	alert(person1().getName())
+	
+/***********************************************************/
+
+	function createPerson(name, age, job) {
+	    var o = new Object();
+	    o.name = name;
+	    o.age = age;
+	    o.job = job;
+	    o.getName = function () {
+	        return this.name;
+	    }
+	    return o; //使用return返回生成的对象实例
+	}
+	var person2 = createPerson('Jack', 19, 'SoftWare Engineer');
+	alert(person2["job"])
+	
+/***********************************************************/
+
+	var person3={
+		name :"hanjun",
+		age:26,
+		job:"web",
+		getName:function(){
+			return this.name
+		}
+	}
+	alert(person3.getName())
+
+/***********************************************************/
+
+// 2、构造函数模式
+	function person4(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.getName=function(){
+			return this.name
+		}
+	}
+	var o = new person4("hanjun",26,"前端")
+	alert(o.getName())
+	
+/***********************************************************/	
+// 3、原型模式	
+	function Person(){}
+	Person.prototype.name = 'Jack';//使用原型来添加属性
+	Person.prototype.age = 29;
+	Person.prototype.getName = function(){
+	    return this.name;
+	}
+	var person1 = new Person();
+	alert(person1.getName());//Jack
+</script>
+</head>
+<body>
+</body>
+</html>

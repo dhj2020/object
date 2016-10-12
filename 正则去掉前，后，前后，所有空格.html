@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则去掉前，后，前后，所有空格</title>
+	</head>
+	<body>
+	<script>
+		//测试的字符串
+		var text = "      北京时间            8月22日消息，201  6年里    约奥运会闭幕式在         马拉卡纳  球场进行。         ";
+	    var regex = new RegExp(/\s+/g);
+	    
+	    //去掉左边空格
+		var str1 = text.replace(/^\s*/g,"");
+		console.log(str1)
+		
+		//去掉右边空格		
+		var str2 = text.replace(/\s*$/g,"");
+		console.log(str2)
+		
+		//去掉前后空格		
+		var str3 = text.replace(/(^\s*)|(\s*$)/g,"")
+		console.log(str3)
+		
+		//去掉所有的空格		
+		var str4 = text.replace(regex,"")      
+	    console.log(str4)
+	    
+	</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>大图轮播</title>
+<style>
+*{ margin: 0; padding: 0;}
+ul,li{ list-style: none;}	
+img{ display: block; border: 0;}
+.wrap{width: 800px; height: 300px; margin: 0 auto; overflow: hidden; position: relative;}	
+ul{ width: 5000px; height: 300px;}
+li{ width: 800px; height: 300px; float: left; font-size: 3em; text-align: center; line-height: 300px;}
+.wrap .btn_left,.wrap .btn_right{position: absolute; top: 50%; width: 40px; height: 40px; background: rgba(0,0,0,.5); margin-top: -20px; font-size: 30px; text-align: center; line-height: 40px; color: #fff; font-weight: bold; cursor: pointer;}
+.wrap .btn_left{left: 0; }
+.wrap .btn_right{ right: 0;}
+
+
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li style="background:#016FCB;">1</li>
+			<li style="background: #FF0543;">2</li>
+			<li style="background:greenyellow;">3</li>
+			<li style="background: #72D1FF;">4</li>
+			<li style="background: moccasin;">5</li>
+			<li style="background: teal;">6</li>
+		</ul>	
+	</div>	
+	
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	//自动播放
+	var autoplay=setInterval(function(){			
+		$(".wrap ul").animate({"margin-left":-800+"px"},600,function(){
+			$(".wrap ul li:first").appendTo($(".wrap ul"))
+			$(".wrap ul").css({"margin-left":0}); 
+		});
+	},3000)
+
+})
+</script>	
+</body>
+</html>

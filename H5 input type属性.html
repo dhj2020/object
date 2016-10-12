@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link type="text/css" href="css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+    <title>H5 input type属性</title>
+    <style>
+	input{display:block;}
+    </style>
+    <script>
+    $(function(){
+    	$("input[type=date]").blur(function(){
+    		alert($(this).val().split("-"))
+    	})
+    })
+    </script>
+</head>
+<body>
+<form>
+	<input type="button" value="按钮">
+	<input type="checkbox" checked="checked">
+	<input type="color">
+	<input type="date" placeholder="MM/DD/YYYY">
+	<input type="datetime" placeholder="请输入时间">
+	<input type="datetime-local" placeholder="本地时间">
+	<input type="month" placeholder="月">
+	<input type="week" placeholder="周">
+	<input type="time" placeholder="时间">
+	<input type="email" placeholder="邮件">
+	<input type="file" placeholder="文件上传">
+	<input type="hidden">
+	<input type="image" src="https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/img/shouye/mingzhan/tianmao2015082101.gif">
+	<input type="number" placeholder="数字">
+	<input type="password" placeholder="密码">
+	<input type="radio" placeholder="单选">
+	<input type="range" min="1" max="10" value="9">
+	<input type="reset">
+	<input type="search" placeholder="搜索">
+	<input type="submit">
+	<input type="tel" placeholder="手机">
+	<input type="text" placeholder="文本">
+	<input type="url" placeholder="网址">
+</form>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>canvas转换为图片</title>
+        <head>
+            <script>
+                window.onload = function() {
+                    draw();
+                };
+
+                function draw() {
+                    var canvas = document.getElementsByTagName("canvas")[0];
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "rgba(125, 46, 138, 0.5)";
+                    ctx.fillRect(25, 25, 100, 100);
+                    ctx.fillStyle = "rgba( 0, 146, 38, 0.5)";
+                    ctx.fillRect(58, 74, 125, 100);
+                    ctx.fillStyle = "rgba( 0, 0, 0, 1)"; // black color 
+                    ctx.fillText("Gloomyfish - Demo", 50, 50);
+                }
+
+                function saveImageInfo() {
+                    draw();
+                    var mycanvas = document.getElementsByTagName("canvas")[0];
+                    var image = mycanvas.toDataURL("image/png");
+                    alert(image)
+                    document.write("<img src='" + image + "' alt='from canvas'/>");
+                }
+            </script>
+
+        </head>
+
+        <body bgcolor="#E6E6FA">
+            <div>
+                <canvas width=200 height=200></canvas>
+                <button id="saveImageBtn" onclick='saveImageInfo()'>保存图片</button>
+            </div>
+        </body>
+
+</html>

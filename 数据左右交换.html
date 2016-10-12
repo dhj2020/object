@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数据左右转移</title>
+		<style>
+			.glyphicon-trash{ color:#30a5ff;}
+			.moveSelect{position:absolute; top:50%; margin: -20px 0 0 -15px; left: 30%; width: 70px; height: 40px; border-radius: 5px; font-size: 14px; line-height: 40px; text-align: center; background: #ddd;}
+			.glyphicon-trash,input[type='checkbox'],.moveSelect{cursor:pointer}
+			.glyphicon-trash{ font-style: normal;}
+			table{ border: solid 1px #666;;border-collapse:collapse; width: 100%;}
+			table tr th,table tr td{border: solid 1px #666; text-align: center; line-height: 30px;}
+		</style>
+	</head>
+	<body>
+	<h1>数据左右转移</h1>
+	<div class="panel-body" style="width: 100%;">
+       	<div class="col-lg-5" style="float: left; width: 45%;">
+       		 <table>
+         		<thead>
+         			<tr class="active">
+	         			<th style="width:25%">企业编码</th>
+	         			<th>企业名称</th>
+	         			<th>操作</th>
+         			</tr>
+         		</thead>
+         		<tbody class="tableList">
+         			<tr data-title = "检测机构1">
+         				<td>A001</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构2">
+         				<td>A002</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构3">
+         				<td>A003</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构4">
+         				<td>A004</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构5">
+         				<td>A005</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构6">
+         				<td>A006</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构7">
+         				<td>A007</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构8">
+         				<td>A008</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构9">
+         				<td>A009</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构10">
+         				<td>A010</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         			<tr data-title = "检测机构11">
+         				<td>A011</td>
+         				<td>珠宝检测中心</td>
+         				<td><i class="glyphicon-trash">✖</i></td>
+         			</tr>
+         		</tbody>
+         	</table>
+        </div>
+        <div class="col-lg-1" style="position: relative; float: left; width: 10%;">
+        	<div class="moveSelect"><<左移右</div>
+        </div>
+        <div class="col-lg-6" style="float: right; width: 45%;">
+       		 <table id="sourceComapny">
+         		<thead>
+         			<tr class="active">
+         				<th><input type="checkbox"></th>
+	         			<th style="width:20%">企业编码</th>
+	         			<th>企业名称</th>
+	         			<th style="width:20%">企业分类</th>
+         			</tr>
+         		</thead>
+         		<tbody class="tableMove">
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B01</td>
+         				<td>珠宝检测中心</td>
+         				<td>品牌商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B02</td>
+         				<td>珠宝检测中心</td>
+         				<td>开发商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B03</td>
+         				<td>珠宝检测中心</td>
+         				<td>经销商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B04</td>
+         				<td>珠宝检测中心</td>
+         				<td>品牌商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B05</td>
+         				<td>珠宝检测中心</td>
+         				<td>生产商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B06</td>
+         				<td>珠宝检测中心</td>
+         				<td>品牌商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B07</td>
+         				<td>珠宝检测中心</td>
+         				<td>品牌商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B08</td>
+         				<td>珠宝检测中心</td>
+         				<td>开发商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B09</td>
+         				<td>珠宝检测中心</td>
+         				<td>经销商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B10</td>
+         				<td>珠宝检测中心</td>
+         				<td>品牌商</td>
+         			</tr>
+         			<tr>
+         				<td><input type="checkbox"></td>
+         				<td>B11</td>
+         				<td>珠宝检测中心</td>
+         				<td>生产商</td>
+         			</tr>
+         		</tbody>
+         	</table>
+        </div> 
+   </div>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	function setHeight(){
+		    var $heigth1 = $(".col-lg-5").height();
+		    var $heigth2 = $(".col-lg-6").height();
+		    var _height = $heigth1>$heigth2?$heigth1:$heigth2;
+		    $(".moveSelect").parent(".col-lg-1").height(_height);
+		};
+		setHeight();
+		$(".active input[type=checkbox]").click(function(){
+		    if(!$(this).is(':checked')){
+		        $(this).parents("thead").next("tbody").find("td").children("input[type=checkbox]").removeProp("checked");
+		        $(this).parents("thead").next("tbody").children("tr").removeClass("moveTr");
+		    }else{
+		        $(this).parents("thead").next("tbody").find("td").children("input[type=checkbox]").prop("checked",true);
+		        $(this).parents("thead").next("tbody").children("tr").addClass("moveTr");
+		    }
+		});
+		$("#sourceComapny").on("click","tr td input[type=checkbox]",function(){
+		    if(!$(this).is(':checked')){
+		        $(this).removeProp("checked");
+		        $(this).parents("tr").removeClass("moveTr");
+		    }else{
+		        $(this).prop("checked",true);
+		        $(this).parents("tr").addClass("moveTr");
+		    }
+		});
+		$(".moveSelect").click(function(){
+		    $(".moveTr").appendTo($(".tableList"));
+		    $(".tableList").find("input").parent("td").remove();
+		    $.each($(".moveTr"),function(i){
+		        $(".moveTr").eq(i).data("title",$(".moveTr").eq(i).find("td:nth-child(3)").text());
+		    });
+		    $(".tableList tr.moveTr td:nth-child(3n)").replaceWith("<td><i class='glyphicon-trash'>✖</i></td>");
+		    $(".tableList tr.moveTr").removeClass("moveTr");
+		    $(".active input[type=checkbox]").removeProp("checked");
+		    setHeight();
+		});
+		$(".tableList").on("click",".glyphicon-trash",function(){
+			var newTr = $(this).parents("tr").addClass("sTr").appendTo($(".tableMove"));
+			newTr.find("td:nth-child(3)").replaceWith("<td>"+$(this).parents("tr").data("title")+"</td>");
+			newTr.prepend("<td><input type='checkbox'></td>");
+		    setHeight();
+		})
+   })
+	</script>
+	</body>
+</html>

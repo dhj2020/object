@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>react入门(2)  React事件</title>
+    <meta charset="utf-8">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+    .btn{ color: #fff; background-color: #000; border: none; padding: 6px 8px; margin-left:10px  }
+    input{ height: 24px; padding: 0 10px; }
+    </style>
+</head>
+<body>
+    <!--
+        //注释方式一
+        /*注释方式二*/
+        {/*注释方式三*/}
+        值得注意的是上面提到的jsx里面写注释。在react里面，我们写html代码的时候，注释就要用{/*注释*/}这种方式，其他两种方式都会报错。
+    -->
+    <script type="text/babel">
+
+        /*方法2*/
+        var fn2 = function(){
+            alert("我是按钮2")
+        };
+
+        /*方法3*/
+        function fn3(){
+            alert("我是按钮3")
+        };
+
+        var BtnSet = React.createClass({
+
+            /*方法1*/
+            fn1:function(){
+                alert("我是按钮1")
+            },
+            
+            render:function(){
+
+                /*方法6*/
+                var fn6 = function(){
+                    alert("我是按钮6")
+                };
+
+                return (
+                    <div>
+                        <button onClick={this.fn1}>按钮1</button>
+                        <button onClick={fn2}>按钮2</button>
+                        <button onClick={fn3}>按钮3</button>
+                        <button onClick={this.fn4.alert}>按钮4</button>
+                        <button onClick={this.fn5}>按钮5</button>
+                        <button onClick={fn6}>按钮6</button>
+                    </div>
+                )
+            }
+        });
+
+        /*方法4*/
+        BtnSet.prototype.fn4 = ({
+            alert:function(){
+                alert("我是按钮4")
+            }
+        });
+
+        /*方法5*/
+        BtnSet.prototype.fn5 = function(){
+            alert("我是按钮5")
+        };
+
+        ReactDOM.render(<BtnSet/>,document.body)
+    </script>
+</body>
+</html>

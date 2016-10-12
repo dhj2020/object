@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动态添加和删除数据</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<style>
+	.iptdiv{ margin:10px 0}
+	ul{ width:180px}
+	ul,li{ list-style:none}
+	ul li{ margin: 10px 0}
+	ul li span{ background:#666; border-radius:20px; width:20px; height:20px; text-align:center; color:#fff; cursor:pointer}
+</style>
+
+</head>
+
+<body>
+
+<script>
+$(function(){
+	$("#addImg").click(function(){
+		$("#mdiv").append('<div class="iptdiv" ><input type="file" name="img[]" class="ipt" /><a href="#" name="rmlink">X</a></div>');
+		// 为新元素节点添加事件侦听器
+		bindListener();
+	})
+    	
+	// 用来绑定事件(使用unbind避免重复绑定)
+	function bindListener(){
+		$("a[name=rmlink]").unbind().click(function(){
+			$(this).parent().remove(); 
+		})
+	}
+	
+})
+
+</script>
+<form action="" method="post" enctype="multipart/form-data"> 
+ <label>请选择上传的图片</label> 
+  <a href="javascript:addimg()" id="addImg">增加图片</a> 
+  <div class="mdiv" id="mdiv"> 
+    <div class="iptdiv" ><input type="file" name="img[]" class="ipt" /><a href="#" name="rmlink">X</a></div> 
+   </div> 
+  <input type="submit" name="submit" value="上传图片" /> 
+ </form> 
+
+<hr>
+
+
+<script>
+$(function(){
+	
+	/**
+	 **
+	//方法一（将新节点添加移除绑定事件监听）
+	var i=1
+	$("button").on('click',function(){
+		 //动态添加的
+		 $("ul").append("<li><input type='text' value='"+i+"' placeholder='添加' /><span data-num='"+i+"' style='float:right'>x</span></li>")	
+		 i++
+		 
+		 //为新元素节点添加事件侦听器
+		 removeListener()
+	})	
+	
+	//用来绑定事件(使用unbind避免重复绑定)
+	function removeListener(){
+		//移除动态添加的
+		$("ul li").unbind().on('click','span',function(){
+			$(this).parent().remove()	
+		})
+	}
+	**
+	**/
+	
+	//方法二（写在事件里）
+	var i=1
+	$("button").on('click',function(){
+		 //动态添加的
+		 $("ul").append("<li><input type='text' value='"+i+"' placeholder='添加' /><span data-num='"+i+"' style='float:right'>x</span></li>")	
+		 i++
+		 
+		 //移除动态添加的
+		$("ul li").on('click','span',function(){
+			$(this).parent().remove()	
+		})
+	})	
+	
+})
+</script>
+<button>添加选项</button>
+<ul>
+	<li><input type="text" value="0" placeholder="添加" /><span data-num='0' style="float:right">x</span></li>
+</ul>
+
+
+
+</body>
+</html>

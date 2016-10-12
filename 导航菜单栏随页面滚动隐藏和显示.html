@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>导航菜单栏随页面滚动隐藏和显示</title>
+    <style>
+        *{ margin: 0; padding: 0}
+        .header-wrap{position:fixed; width:100%; height:50px; background:red}
+        .animated {
+            -webkit-animation-duration: 0.5s;
+            -moz-animation-duration: 0.5s;
+            -o-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+            -webkit-animation-fill-mode: both;
+            -moz-animation-fill-mode: both;
+            -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        @-moz-keyframes slideDown {
+            0% {
+                -moz-transform: translateY(-100%);
+            }
+            100% {
+                -moz-transform: translateY(0);
+            }
+        }
+        @-webkit-keyframes slideDown {
+            0% {
+                -webkit-transform: translateY(-100%);
+            }
+            100% {
+                -webkit-transform: translateY(0);
+            }
+        }
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .animated.slideDown {
+            -webkit-animation-name: slideDown;
+            -moz-animation-name: slideDown;
+            -o-animation-name: slideDown;
+            animation-name: slideDown;
+        }
+        @-moz-keyframes slideUp {
+            0% {
+                -moz-transform: translateY(0);
+            }
+            100% {
+                -moz-transform: translateY(-100%);
+            }
+        }
+        @-webkit-keyframes slideUp {
+            0% {
+                -webkit-transform: translateY(0);
+            }
+            100% {
+                -webkit-transform: translateY(-100%);
+            }
+        }
+        @keyframes slideUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        .animated.slideUp {
+            -webkit-animation-name: slideUp;
+            -moz-animation-name: slideUp;
+            -o-animation-name: slideUp;
+            animation-name: slideUp;
+        }
+        .animated.slideUp .right-col {
+            height: 0;
+        }
+    </style>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var page = {
+                init: function() {
+                    this.scroll(this.scrollFn);
+                },
+
+                scroll: function(fn) {
+                    var beforeScrollTop = $(window).scrollTop(),
+                            fn = fn || function() {};
+
+                    function scrollDir() {
+                        var afterScrollTop = $(window).scrollTop(),
+                                delta = afterScrollTop - beforeScrollTop;
+                        if (delta === 0) return false;
+                        fn(delta > 0 ? "down" : "up");
+                        beforeScrollTop = afterScrollTop;
+                    }
+
+                    if (window.attachEvent) {
+                        window.attachEvent("onscroll", scrollDir); //ie
+                    } else {
+                        window.addEventListener("scroll", scrollDir, false);
+                    }
+                },
+                scrollFn: function(direction) {
+                    var scrollTop = $(window).scrollTop();
+                    var $sohoHeader = $(".header-wrap");
+                    if (scrollTop > 200) {
+                        if (direction === "up") {
+                            $sohoHeader.removeClass("slideUp").addClass("slideDown");
+                        } else if (direction === "down") {
+                            $sohoHeader.addClass("slideUp").removeClass("slideDown");
+                        }
+                    } else if (scrollTop === 0) {
+                        $sohoHeader.removeClass("slideDown").removeClass("slideUp");
+                    }
+                }
+            }
+            page.init();
+
+        })
+    </script>
+</head>
+
+<body>
+<div class="header-wrap animated"></div>
+<div style="width:100%; height: 1000px"></div>
+</body>
+</html>

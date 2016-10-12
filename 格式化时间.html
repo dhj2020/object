@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格式化时间</title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+    $(function(){
+        function showNationTime() {
+            // 获取当前时间
+            var dateTime = new Date()
+            var nationtime = {
+                getHours:function(){
+                    return dateTime.getHours()
+                },
+                getMinutes:function(){
+                    return dateTime.getMinutes()
+                },
+                getSeconds:function(){
+                    return dateTime.getSeconds()
+                }
+            }
+            //日期格式化
+            var Y = $(".localTime .year")
+            var M = $(".localTime .month")
+            var D = $(".localTime .date")
+            var Week = $(".localTime .day")
+            Y.html(dateTime.getFullYear())
+            M.html(dateTime.getMonth()+1)
+            D.html(dateTime.getDate())
+
+            switch (dateTime.getDay()){
+                case 0:Week.html("星期日");
+                break;
+                case 1:Week.html("星期一")
+                break;
+                case 2:Week.html("星期二")
+                break;
+                case 3:Week.html("星期三")
+                break;
+                case 4:Week.html("星期四")
+                break;
+                case 5:Week.html("星期五")
+                break;
+                case 6:Week.html("星期六")
+                break;
+            }
+            //时间格式化
+            var h = nationtime.getHours()
+            var m = nationtime.getMinutes()
+            var s = nationtime.getSeconds()
+            var a = $(".localTime .hour")
+            var b = $(".localTime .minute")
+            var c = $(".localTime .second")
+            h<10?a.html("0" + h):a.html(h)
+            m<10?b.html("0" + m):b.html(m)
+            s<10?c.html("0" + s):c.html(s)
+        }
+        setInterval(showNationTime,1000)
+    })
+    </script>
+</head>
+<body>
+<div class="localTime">当前时间为：
+    <span class="year"></span>年<span class="month"></span>月<span class="date"></span>日 </span><span class="hour"></span>:<span class="minute"></span>:<span class="second"></span> <span class="day"></span>
+</div>
+</body>
+</html>

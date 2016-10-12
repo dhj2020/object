@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处理用户输入</title>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <style>
+        section div{ width:50px; height:50px; border-radius: 5px; background:red; text-align: center; line-height: 50px; font-size: 20px; margin: 10px 0}
+        .current-bg{ background: #000 !important; color:#FFF; }
+    </style>
+</head>
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </section>
+    <button>抽奖</button>
+
+    <script>
+    $(function(){
+        var gold=['一等奖','二等奖','三等奖','四等奖','五等奖','六等奖','七等奖','八等奖'];
+        var i,n;
+        var j=3
+        var len = $("section div").length;
+        $("button").click(function(){
+            i=0,n=0;
+            if(j==0){
+               alert("3次抽奖次数已用完");
+               return false;
+            };
+            game();
+            j--;
+        });
+        //抽奖
+        function game(){
+            var currentIndex = Math.floor(Math.random()*len+1);
+            var changeLen = len*4 + currentIndex;
+            var timer = setInterval(function(){
+                $("section div").eq(i).addClass("current-bg").siblings().removeClass("current-bg");
+                i++;
+                n++;
+                if(i==len){
+                    i=0;
+                };
+                console.log(n)
+                if(n==changeLen){
+                    clearInterval(timer);
+                    console.log("当前："+n);
+                    getGold(currentIndex-1);
+                };
+            },100)
+            function getGold(index){
+                switch(index){
+                    case index:
+                        alert(gold[index]);
+                    break;
+                }
+            };
+        };
+    })
+    </script>
+</body>
+</html>

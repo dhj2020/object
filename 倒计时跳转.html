@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时跳转</title>
+    <script>
+        var num=9
+        function startCount(URL) {
+            document.getElementsByTagName('span')[0].innerHTML = num
+            num--
+            if(num==0){
+                window.location.href = URL
+            }
+        }
+        setInterval("startCount('http://hao123.com')",1000)
+    </script>
+</head>
+<body>
+倒计时<span></span>秒，网页将会自动跳转！
+</body>
+</html>

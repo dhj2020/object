@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .fileupload {
+            position: absolute;
+            left: 407px;
+            top: 278px;
+            width: 280px;
+        }
+        input[name=textfield]{
+            width: 190px;
+            border: 1px solid #CDCDCD;
+            height: 20px;
+            display: inline;
+            float: left;
+            text-align: center;
+        }
+        input[name=liulan] {
+            background-color: #FFF;
+            border: 1px solid #CDCDCD;
+            height: 23px;
+            width: 70px;
+            float: right;
+            display: inline;
+            color: #666;
+        }
+        input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            height: 25px;
+            filter: alpha(opacity:0);
+            opacity: 0;
+            width: 280px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="fileupload">
+    <input type="text" name="textfield" id="uploadfile1">
+    <input type="button" name="liulan" value="浏览...">
+    <input type="file" title="上传照片1" onchange="document.getElementById('uploadfile1').value=this.value">
+</div>
+
+</body>
+</html>

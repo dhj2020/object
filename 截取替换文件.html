@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>截取替换文件</title>
+		<style>
+		  ul,li{ list-style: none; }
+		</style>
+		<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<script>
+		$(function(){
+		    
+		  //通过slice，replace截取替换文字  
+		  var len = $("ul.divHtml li").length
+          for(var i=0;i<len;i++){
+            var selectHtml = $("ul.divHtml li").eq(i).text()
+            $("ul.divHtml li").eq(i).text(selectHtml.replace(selectHtml.slice(3,9),"****")) 
+          }
+          
+          //通过substr，lastIndexOf截取url
+          var num = $("ul.addUrl li").length
+          $("ul.addUrl li").each(function(){
+              var aUrl = $(this).text()
+              $(this).text(aUrl.substr(0,aUrl.lastIndexOf('/')))
+          })
+          
+		})
+		</script>
+	</head>
+	<body>
+	  <ul class="divHtml">
+	    <li>124354657534</li>
+	    <li>197736465556</li>
+	    <li>137886735675</li>
+	    <li>159324376757</li>
+	    <li>188324656454</li>
+	    <li>150978666423</li>
+	  </ul>
+	  <ul class="addUrl">
+	      <li>https://www.hao123.com/hj.gif</li>
+	      <li>http://www.bootcdn.cn/jquery/djsadj.jpg</li>
+	      <li>https://www.baidu.com/s?word=bootc.docx</li>
+	  </ul>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <style type="text/css">
+        canvas{border:dashed 2px #CCC}
+    </style>
+    <script type="text/javascript">
+        function $$(id){
+            return document.getElementById(id);
+        }
+        
+        var i = 1
+        function pageLoad(){      	
+        	i+=0.1
+            var can = $$('can');
+            var cans = can.getContext('2d');
+            cans.beginPath();
+            //arc方法的用法是 arc(X,Y,Radius,startAngle,endAngle,anticlockwise),意思是（圆心X坐标，圆心Y坐标，半径，开始角度（弧度），结束角度弧度，是否按照顺时针画）；
+            cans.arc(200,150,100,0,i,true);
+            cans.closePath();
+            cans.lineWidth = 5;
+            cans.strokeStyle = 'red';
+            cans.stroke();
+        }
+        setInterval(pageLoad,100)
+        
+        function pageLoad2(){
+            var can = $$('can2');
+            var cans = can.getContext('2d');
+            cans.beginPath();
+            cans.arc(200,150,100,0,Math.PI*2,true);
+            cans.closePath();
+            cans.fillStyle = 'green';//本来这里最初使用的是red，截图一看，傻眼了，怕上街被爱国者打啊，其实你懂的~~
+            cans.fill();
+        }
+    </script>
+    <body onload="pageLoad();pageLoad2()">
+        <canvas id="can" width="400px" height="300px">4</canvas>
+        <canvas id="can2" width="400px" height="300px">4</canvas>
+    </body>
+</html>

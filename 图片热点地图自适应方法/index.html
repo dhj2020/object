@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片热点地图自适应方法</title>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script>
+        $(function(){
+			//图片热点地图自适应方法
+            function setMap(id,imgW){
+                var _width = $(id).width()/imgW
+                $("#Map area").each(function(index, element) {
+                    var a = $(this).attr("coords").split(",")
+                    $(this).attr("coords",a[0]*_width+","+a[1]*_width+","+a[2]*_width)
+                });
+            }
+            setMap("#imap",369)
+			
+        })
+    </script>
+</head>
+
+<body>
+<div style="width:100%">
+    <img id="imap" src="idxban.jpg" style="width:100%" usemap="#Map" border="0" />
+    <map name="Map" id="Map">
+        <area class="a" shape="circle" coords="102,63,47" href="#" />
+        <area shape="circle" coords="94,284,48" href="#" />
+        <area shape="circle" coords="56,167,46" href="#" />
+        <area shape="circle" coords="288,282,46" href="#" />
+        <area shape="circle" coords="323,160,45" href="#" />
+        <area shape="circle" coords="277,59,44" href="#" />
+    </map>
+</div>
+</body>
+</html>

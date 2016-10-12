@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js" ></script>
+    <script>
+        $(function(){
+            function dialog(clkName,okBtn){
+                $(clkName).on("click",function(){
+                    var i = $(this).index()
+                    $(".ui-dialog").eq(i).show()
+                })
+                $(okBtn).on('click',function(){
+                    if($(this).hasClass('c')){
+                        $(this).parents('.ui-dialog').hide()
+                        return false
+                    }else{
+                        $(this).parents('.ui-dialog').hide()
+                        location.href='/JSON.stringify()和JSON.parse()的比较.html'
+                        //alert("提交成功")
+                    }
+                })
+            }
+            //调用dialog
+            dialog(".ck",'button')
+        })
+    </script>
+    <title></title>
+    <style>
+        *{margin: 0; padding: 0;}
+        input,button{ border: 0;}
+        :focus{ outline: 0;}
+        .ui-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0,0,0,.4);
+            display: none;
+        }
+        .ui-dialog-box {
+            border-radius: 6px;
+            width: 270px;
+            left: 50%;
+            top: 50%;
+            margin: -50px 0 0 -135px;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            pointer-events: auto;
+            background-color: rgba(253,253,253,.95);
+            position: relative;
+            font-size: 16px;
+        }
+        .ui-dialog-box header{
+            font-size: 18px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: solid 1px #e0e0e0;
+        }
+        .ui-dialog-box article{
+            width: 90%;
+            padding: 5%;
+            line-height: 25px;
+        }
+        .ui-dialog-box footer{
+            width: 100%;
+            border-top: solid 1px #e0e0e0;
+            line-height: 25px;
+            display: -webkit-box;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-box-align: center;
+        }
+        .ui-dialog-box footer button:first-child {
+            border-right: 1px #e0e0e0 solid;
+            border-bottom-left-radius: 6px;
+        }
+        .ui-dialog-box footer button {
+            color: #00a5e0;
+            text-align: center;
+            width: 100%;
+            line-height: 40px;
+            background: transparent;
+            display: block;
+            font-size: 16px;
+            margin: 0!important;
+            -webkit-box-flex: 1;
+        }
+    </style>
+</head>
+<body>
+<a class="ck" >点击我弹出浮层1</a>
+<a class="ck" >点击我弹出浮层2</a>
+<a class="ck" >点击我弹出浮层3</a>
+<div class="ui-dialog">
+    <div class="ui-dialog-box">
+        <header>弹出层提示框1</header>
+        <article>开通年费QQ会员!!</article>
+        <footer>
+            <button class="c">取消</button>
+            <button class="q">确定</button>
+        </footer>
+    </div>
+</div>
+<div class="ui-dialog">
+    <div class="ui-dialog-box">
+        <header>弹出层提示框2</header>
+        <article>开通年费QQ会员即可领取欢乐斗地主感恩节回馈礼包!</article>
+        <footer>
+            <button class="c">取消</button>
+            <button class="q">确定</button>
+        </footer>
+    </div>
+</div>
+<div class="ui-dialog">
+    <div class="ui-dialog-box">
+        <header>弹出层提示框3</header>
+        <article>开通年费QQ会员即可领取欢乐斗地主感恩节回馈礼包,王德飞恶恶风如果俄国人热狗任天堂！</article>
+        <footer>
+            <button class="c">取消</button>
+            <button class="q">确定</button>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

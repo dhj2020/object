@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+*{ margin: 0; padding: 0; color: #999999; font-size: 12px;}
+ul,li{ list-style: none;}
+#star8,#star9{ width: 240px; margin: 50px auto;}
+ul{ width: 240px;}
+li{ width: 20px; height: 20px; float: left; margin: 0 5px; background:url(star.png) no-repeat; cursor: pointer;}
+.current{ background:url(star.png) 0 -25px no-repeat}
+.description{ width:100%;display: block; clear: both; padding-top: 10px; text-align: center;}
+</style>
+</head>
+<body>
+
+<div id="star8">
+	<ul>
+		<li data-num = "1"></li>
+		<li data-num = "2"></li>
+		<li data-num = "3"></li>
+		<li data-num = "4"></li>
+		<li data-num = "5"></li>
+		<li data-num = "6"></li>
+		<li data-num = "7"></li>
+		<li data-num = "8"></li>
+	</ul>
+	<div class="description"></div>
+</div>
+
+<div id="star9">
+	<ul>
+		<li data-num = "1"></li>
+		<li data-num = "2"></li>
+		<li data-num = "3"></li>
+		<li data-num = "4"></li>
+		<li data-num = "5"></li>
+		<li data-num = "6"></li>
+		<li data-num = "7"></li>
+		<li data-num = "8"></li>
+	</ul>
+	<div class="description"></div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	
+	function starslect(obj){	
+		var description = ["非常差，回去再练练","真的是差，都不忍心说你了","比之前的好点了","一般，还过得去吧","很好，再努力","哎呦，不错哦是我想要的东西","真心好！赞赞赞","太完美了，此物只得天上有!"]
+		//alert(description instanceof Array)
+		$(obj+" ul li").on("click",function(){
+			var i = $(this).index()
+			$(obj+" ul li").removeClass('current')
+			$(obj+","+obj+" ul li").off('mouseenter').off('mouseleave')
+			$(obj+" ul li").slice(0,i+1).addClass("current")
+			$(obj+" .description").text(description[i]+" ("+$(obj+" ul li").eq(i).attr("data-num")+"分)")
+		})
+		
+		$(obj+" ul li").hover(function(){
+			var i = $(this).index()
+			$(obj+" ul li").removeClass('current')
+			$(obj+" ul li").slice(0,i+1).addClass("current")	
+			$(obj+" .description").html(description[i])
+		})
+		$(obj).mouseleave(function(){
+			$(obj+" ul li").removeClass('current')
+			$(obj+" .description").text("")
+			}
+		)
+	}
+	
+	starslect("#star8")
+	starslect("#star9")
+	
+	/*var description = ["非常差，回去再练练","真的是差，都不忍心说你了","比之前的好点了","一般，还过得去吧","很好，再努力","哎呦，不错哦是我想要的东西","真心好！赞赞赞","太完美了，此物只得天上有!"]
+	//alert(description instanceof Array)
+	$("ul li").on("click",function(){
+		var i = $(this).index()
+		$("ul li").removeClass('current')
+		$("#star8,ul li").off('mouseenter').off('mouseleave')
+		$("ul li").slice(0,i+1).addClass("current")
+		$(".description").text(description[i]+" ("+$("ul li").eq(i).attr("data-num")+"分)")
+		//alert($(".description").text())
+	})
+	
+	$("ul li").hover(function(){
+		var i = $(this).index()
+		$("ul li").removeClass('current')
+		$("ul li").slice(0,i+1).addClass("current")	
+		$(".description").html(description[i])
+	})
+	$("#star8").mouseleave(function(){
+		$("ul li").removeClass('current')
+		$(".description").text("")
+		}
+	)*/
+	
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/register.js"></script>
+	<link rel="stylesheet" href="http://www.jingoal.com/wap/css/register.css?v=20150701" />
+</head>
+<body>
+	<div class="v6-form">
+			<div class="v6-form-item clearfix">
+				<div class="v6-form-left">
+					<label>手机号</label>
+				</div>
+				<div class="v6-form-right">
+					<input id="mobile" type="tel" onfocus="$('#mobileErrorTip').hide();" onblur="wapRegister.validateMobile(true);" placeholder="将作为登录帐号使用">
+				</div>
+				<div id="mobileErrorTip" class="v6-form-error hide" data-empty="请输入手机号" data-illegal="请输入正确格式的大陆手机号" data-illegal2="手机号已被占用，请重新输入"></div>
+			</div>
+			<div class="v6-form-item clearfix">
+				<div class="v6-form-left">
+					<label>密码</label>
+				</div>
+				<div class="v6-form-right">
+					<input id="passwd" type="password" onfocus="$('#passwdErrorTip').hide();" onblur="wapRegister.validatePasswd();" placeholder="8~20个字符，区分大小写">
+				</div>
+				<div id="passwdErrorTip" class="v6-form-error hide" data-empty="请输入密码" data-illegal="请输入8~20个字符" data-illegal2="强度较低，请包含字母、数字或符号"></div>
+			</div>
+			<div class="v6-form-item clearfix">
+				<div class="v6-form-left">
+					<label>确认密码</label>
+				</div>
+				<div class="v6-form-right">
+					<input id="passwd" type="password" onfocus="$('#passwdErrorTip').hide();" onblur="wapRegister.validatePasswd();" placeholder="8~20个字符，区分大小写">
+				</div>
+				<div id="passwdErrorTip" class="v6-form-error hide" data-empty="请输入密码" data-illegal="请输入8~20个字符" data-illegal2="强度较低，请包含字母、数字或符号"></div>
+			</div>
+			<div class="v6-form-item clearfix">
+				<div class="v6-form-left">
+					<label>企业名称</label>
+				</div>
+				<div class="v6-form-right">
+					<input id="name" type="text" onfocus="$('#nameErrorTip').hide();" onblur="wapRegister.validateName();" maxlength="64" placeholder="企业、团队或机构名，6~64个字">
+				</div>
+				<div id="nameErrorTip" class="v6-form-error hide" data-empty="请输入企业、团队或机构名" data-illegal="请输入6~64个字符"></div>
+			</div>
+		</div>
+		<a onclick ="wapRegister.doRegister();" href="javascript:void(0);" class="v6-btn-submit">提交</a>
+</body>
+</html>

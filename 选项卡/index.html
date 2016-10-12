@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="js/jquery-1.11.3.min.js" ></script>
+<style>
+*{ margin: 0; padding: 0;}
+ul,li{ list-style: none;}
+.wrap{ width: 150px; margin: 0 auto;}
+.wrap nav,.wrap li{ width: 100%; float: left;}
+.wrap li{ line-height: 30px; padding: 0 20px;}
+.wrap ul{ display: none;}
+.wrap nav h3{ height: 40px; line-height: 40px; background: #72D1FF; text-align: center; display: block; color: #fff; border-bottom: solid 2px #999; cursor: pointer; }
+</style>
+<script>
+$(function(){
+	$("h3").each(function(){
+		$(this).click(function(){
+			$(this).next().slideDown().parent().siblings().children("ul").slideUp()
+		})	 
+	}).eq(0).trigger("click")
+	
+})
+	
+</script>
+
+</head>
+
+<body>
+
+<div class="wrap">
+    <nav>
+    	<h3>列表元素项目1</h3>
+        <ul>
+            <li>童装01</li>
+            <li>童装02</li>
+            <li>童装03</li>
+            <li>童装04</li>
+        </ul>
+    </nav>
+    <nav>
+		<h3>列表元素项目2</h3>
+        <ul>
+            <li>女装01</li>
+            <li>女装02</li>
+            <li>女装03</li>
+            <li>女装04</li>
+            <li>女装05</li>
+            <li>女装06</li>
+        </ul>
+    </nav>
+    <nav>
+		<h3>列表元素项目3</h3>
+        <ul>
+            <li>男装01</li>
+            <li>男装02</li>
+            <li>男装03</li>
+            <li>男装04</li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

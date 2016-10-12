@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>大图轮播</title>
+<style>
+*{ margin: 0; padding: 0;}
+ul,li{ list-style: none;}	
+img{ display: block; border: 0;}
+.wrap{width: 800px; height: 300px; margin: 0 auto; overflow: hidden; position: relative;}	
+ul{ width: 800px; height: 300px;}
+li{ width: 800px; height: 300px; float: left; font-size: 3em; text-align: center; line-height: 300px;}
+.wrap .btn_left,.wrap .btn_right{position: absolute; top: 50%; width: 40px; height: 40px; background: rgba(0,0,0,.5); margin-top: -20px; font-size: 30px; text-align: center; line-height: 40px; color: #fff; font-weight: bold; cursor: pointer;}
+.wrap .btn_left{left: 0; }
+.wrap .btn_right{ right: 0;}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li style="background:#016FCB;">1</li>
+			<li style="background: #FF0543;">2</li>
+			<li style="background:greenyellow;">3</li>
+			<li style="background: #72D1FF;">4</li>
+			<li style="background: moccasin;">5</li>
+			<li style="background: teal;">6</li>
+		</ul>	
+	</div>	
+	
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	
+	function tabs(elemt,swidth,leftBtn,rightBtn,speed){
+		//添加按钮组
+		$("<div class='btn_left'><</div><div class='btn_right'>></div>").appendTo($(elemt))
+	
+		var index = 0;
+		var _length = $(elemt+" ul li").length;
+		
+		//切换方式
+		function showImgs(index){
+			$(elemt+" ul li").eq(index).fadeIn().siblings().fadeOut()
+		}
+		
+		//自动播放
+		var autoplay=setInterval(function(){			
+			index++
+			if(index==_length){
+				index=0	
+			}
+			showImgs(index)
+		},speed)
+		
+		//鼠标悬停
+		$(elemt).hover(function(){
+			if(autoplay){
+				clearInterval(autoplay)
+			}
+		},function(){
+			autoplay=setInterval(function(){
+				index++
+				if(index==_length){
+					index=0	
+				}
+				showImgs(index)
+			},speed)
+		})
+		
+		//左点击
+		$(leftBtn).on("click",function(){
+			index--
+			if(index<0){
+				index=_length-1
+			}
+			showImgs(index)
+		})
+		//右点击
+		$(rightBtn).on("click",function(){
+			index++
+			if(index==_length){
+				index=0	
+			}
+			showImgs(index)
+		})
+	}
+	
+	//调用切换方法
+	tabs(".wrap",800,".btn_left",".btn_right",3000)
+})
+</script>	
+</body>
+</html>

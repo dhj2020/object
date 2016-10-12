@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS3 3D标签旋转</title>
+<style>
+.s2end .word {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+}
+.s2end .word p {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200px;
+  white-space: nowrap;
+  text-align: left;
+}
+.s2end .word p span {
+  display: inline-block;
+}
+.s2end .word p i {
+  display: inline-block;
+  color: #0bf;
+  border: solid #0bf 1px;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+.s2end .word p:nth-child(1) i {
+  -webkit-transform: scale(0.9);
+}
+.s2end .word p:nth-child(2) i {
+  -webkit-transform: scale(0.85);
+  color: #0c0;
+  border-color: #0c0;
+}
+.s2end .word p:nth-child(3) i {
+  -webkit-transform: scale(0.8);
+}
+.s2end .word p:nth-child(4) i {
+  -webkit-transform: scale(0.78);
+  color: #0c0;
+  border-color: #0c0;
+}
+.s2end .word p:nth-child(5) i {
+  -webkit-transform: scale(0.72);
+}
+.s2end .word p:nth-child(6) i {
+  -webkit-transform: scale(0.7);
+  color: #0c0;
+  border-color: #0c0;
+}
+.s2end .word p:nth-child(7) i {
+  -webkit-transform: scale(0.65);
+}
+.s2end .word p:nth-child(8) i {
+  -webkit-transform: scale(0.6);
+}
+.s2end .word p:nth-child(9) i {
+  -webkit-transform: scale(0.5);
+  color: #0c0;
+  border-color: #0c0;
+}
+.s2end .word p {
+  -webkit-animation: s2-1 8s infinite linear;
+  -webkit-transform-origin: 0 center;
+}
+.s2end .word p span {
+  -webkit-animation: s2-1b 8s infinite linear;
+  padding-left: 10px !important;
+}
+.s2end .word p:nth-child(1),
+.s2end .word p:nth-child(1) span {
+  -webkit-animation-duration: 9s !important;
+  -webkit-animation-delay: -1s !important;
+  padding-left: 85px;
+}
+.s2end .word p:nth-child(2),
+.s2end .word p:nth-child(2) span {
+  -webkit-animation-duration: 8.3s !important;
+  -webkit-animation-delay: -2s !important;
+  padding-left: 75px;
+}
+.s2end .word p:nth-child(3),
+.s2end .word p:nth-child(3) span {
+  -webkit-animation-duration: 7.6s !important;
+  -webkit-animation-delay: -3s !important;
+  padding-left: 72px;
+}
+.s2end .word p:nth-child(4),
+.s2end .word p:nth-child(4) span {
+  -webkit-animation-duration: 7.3s !important;
+  -webkit-animation-delay: -4s !important;
+  padding-left: 65px;
+}
+.s2end .word p:nth-child(5),
+.s2end .word p:nth-child(5) span {
+  -webkit-animation-duration: 6.8s !important;
+  -webkit-animation-delay: -5s !important;
+  padding-left: 60px;
+}
+.s2end .word p:nth-child(6),
+.s2end .word p:nth-child(6) span {
+  -webkit-animation-duration: 6.2s !important;
+  -webkit-animation-delay: -6s !important;
+  padding-left: 52px;
+}
+.s2end .word p:nth-child(7),
+.s2end .word p:nth-child(7) span {
+  -webkit-animation-duration: 5.8s !important;
+  -webkit-animation-delay: -7s !important;
+  padding-left: 48px;
+}
+.s2end .word p:nth-child(8),
+.s2end .word p:nth-child(8) span {
+  -webkit-animation-duration: 5.5s !important;
+  -webkit-animation-delay: -8s !important;
+  padding-left: 45px;
+}
+.s2end .word p:nth-child(9),
+.s2end .word p:nth-child(9) span {
+  -webkit-animation-duration: 5s !important;
+  -webkit-animation-delay: -9s !important;
+  padding-left: 40px;
+}
+@-webkit-keyframes s2-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes s2-1b {
+  0% {
+    -webkit-transform: rotate(-360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<article class="s2end">
+    <div class="word">
+        <p><span><i>新媒体</i></span></p>
+        <p><span><i>全球化</i></span></p>
+        <p><span><i>互联网思维</i></span></p>
+        <p><span><i>数字创新</i></span></p>
+        <p><span><i>新技术</i></span></p>
+        <p><span><i>无线化</i></span></p>
+        <p><span><i>95后亚文化</i></span></p>
+        <p><span><i>平台化</i></span></p>
+        <p><span><i>小屏幕</i></span></p>
+    </div>
+</article>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+    <body>
+        <canvas/>
+        <script>(function(bodyStyle) {
+        bodyStyle.mozUserSelect = 'none';
+        bodyStyle.webkitUserSelect = 'none';
+        var img = new Image();
+        var canvas = document.querySelector('canvas');
+        canvas.style.backgroundColor = 'transparent';
+        canvas.style.position = 'absolute';
+        img.addEventListener('load', function(e) {
+            var ctx;
+            var w = img.width,
+                h = img.height;
+            var offsetX = canvas.offsetLeft,
+                offsetY = canvas.offsetTop;
+            var mousedown = false;
+
+            function layer(ctx) {
+                ctx.fillStyle = 'gray';
+                ctx.fillRect(0, 0, w, h);
+            }
+
+            function eventDown(e) {
+                e.preventDefault();
+                mousedown = true;
+            }
+
+            function eventUp(e) {
+                e.preventDefault();
+                mousedown = false;
+            }
+
+            function eventMove(e) {
+                e.preventDefault();
+                if (mousedown) {
+                    if (e.changedTouches) {
+                        e = e.changedTouches[e.changedTouches.length - 1];
+                    }
+                    var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+                        y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+                    with(ctx) {
+                        beginPath()
+                        arc(x, y, 30, 0, Math.PI * 2);
+                        fill();
+                    }
+                }
+            }
+            canvas.width = w;
+            canvas.height = h;
+            canvas.style.backgroundImage = 'url(' + img.src + ')';
+            ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'transparent';
+            ctx.fillRect(0, 0, w, h);
+            layer(ctx);
+            ctx.globalCompositeOperation = 'destination-out';
+            canvas.addEventListener('touchstart', eventDown);
+            canvas.addEventListener('touchend', eventUp);
+            canvas.addEventListener('touchmove', eventMove);
+            canvas.addEventListener('mousedown', eventDown);
+            canvas.addEventListener('mouseup', eventUp);
+            canvas.addEventListener('mousemove', eventMove);
+        });
+        img.src = 'https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/r/image/2016-04-28/8dc3a8568f848747092120bfd7b0a1bb.jpg';
+            })(document.body.style);
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>react入门（1）操作Css和Dom操作</title>
+    <meta charset="utf-8">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+    .btn{ color: #fff; background-color: #000; border: none; padding: 6px 8px; margin-left:10px  }
+    input{ height: 24px; padding: 0 10px; }
+    </style>
+</head>
+<body>
+    <!--
+        //注释方式一
+        /*注释方式二*/
+        {/*注释方式三*/}
+        值得注意的是上面提到的jsx里面写注释。在react里面，我们写html代码的时候，注释就要用{/*注释*/}这种方式，其他两种方式都会报错。
+    -->
+    
+    <div id="example"></div>
+    <script type="text/babel">
+
+        //外部批量定义样式
+        var userTips = {
+            background:"red",
+            padding:"10px",
+            width:"300px",
+        };
+
+        var User = React.createClass({
+            render: function() {
+
+                //定义单个样式
+                var textColor="blue";
+
+                return (
+                    <span>
+                        <label style={{color:textColor}}>用户名：</label>
+                        <input type="text"/>
+                        <label style={this.set.labelColor}>密码：</label>
+                        <input type="password" />
+                    </span>
+                )        
+            }
+        });
+
+        //下面的<User/>为引入定义的User组件
+        var Login = React.createClass({
+            render:function(){
+
+                //内部批量定义样式
+                var bg = {
+                    background:"#eee",
+                    width:"100px",
+                    textAlign:"center",
+                    fontSize:"20px",
+                    padding:"5px 10px"
+                };
+
+                return (
+                    <div>
+                        <h1 style={bg}>会员登录</h1>
+                        <User/>  {/*引入子组件User*/}
+                        <button className="btn">登录</button>
+                        <p style={userTips}><b>说明：</b>这是用react组件生成的登陆框</p>
+                    </div>
+                )
+            }
+        });
+
+        /*原型链方法*/
+        User.prototype.set = {
+            labelColor:{
+                color:"green",
+                "margin-left":"20px",
+            }
+        };
+
+        //解析并生成节点,组件渲染在页面上
+        ReactDOM.render(<Login/>, document.getElementById('example'));
+
+        //操作dom
+        var input = document.getElementsByTagName("input");
+        var button = document.getElementsByTagName("button");
+        button[0].onclick=function(){
+            alert("提交按钮的class是："+this.className)
+            alert("输入的input之是："+input[0].value)
+        }
+    </script>
+</body>
+</html>

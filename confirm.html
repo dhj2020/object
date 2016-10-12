@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			function check(){
+				var a = confirm("是否跳转？")
+				if(a==true){
+					document.getElementsByTagName('a')[0].style.display='none'
+					location.href="http://hao123.com"
+				}
+			}
+		</script>
+	</head>
+	<body>
+	
+    <a onclick= "check()">走你</a>
+   <!--直接写在html中
+   	<a onclick= "if(confirm( '是否确定删除！ ')==false)return false;" href="http://hao123.com">删除</a>
+   --> 
+	
+	</body>
+</html>
