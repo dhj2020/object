@@ -71,7 +71,8 @@
         <script>
             Zepto(function() {
                 $(".ck").eq(0).click(function() {
-                    showPannel.customHtml(".addressInfo")
+                    showPannel.customHtml(".addressInfo");
+                    getCallBack()
                 });
                 $(".ck").eq(1).click(function() {
                     showPannel.confirm({
@@ -79,13 +80,15 @@
                         title: "是否清除页面内容",
                         isButton: true,
                         content: "受美联储加息预期影响，美元指数大涨，加之英镑“闪崩”事件造成全球避险情绪上升，离岸人民币汇率跟随“闪崩”。这都增加了人民币汇率贬值预期，在岸人民币汇率也因此承压！",
-                    })
+                    });
+                    getCallBack()
                 });
                 $(".ck").eq(2).click(function() {
                     showPannel.confirm({
                         isHeader: false,
                         content: "是否确定删除？",
-                    })
+                    });
+                    getCallBack()
                 });
                 $(".ck").eq(3).click(function() {
                     showPannel.confirm({
@@ -99,6 +102,11 @@
                 $(".ck").eq(4).click(function() {
                     showPannel.tipShow("操作成功，1秒后自动关闭！")
                 });
+                function getCallBack(){
+                    $(".ui-dialog button").click(function(){
+                        alert("回调成功")
+                    })
+                }
             })
         </script>
     </body>

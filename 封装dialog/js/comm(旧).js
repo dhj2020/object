@@ -1,16 +1,14 @@
-//封装弹出层  hanjun 2016/10/10 , callback执行回调
+//封装弹出层  hanjun 2016/10/10
+
 ;Zepto(function() {
     showPannel = {
-        customHtml: function(elementId, callback) {
+        customHtml: function(elementId) {
             var content = $(elementId).clone().remove().show().prop("outerHTML"); // \u83B7\u53D6\u5305\u542B\u672C\u8EAB\u7684 html
             var customObj = $('<div class="ui-dialog"><div class="ui-dialog-custom-box"><i class="ui-font icon-close" data-role="button"></i><article>' + content + '</article></div></div>');
             if($(".ui-dialog-custom-box").length != 0) {
                 $(".ui-dialog-custom-box").parent().show();
             } else {
                 customObj.appendTo("body").show();
-                if($(elementId).is(":hidden")) {
-                    $(elementId).eq(0).remove();
-                }
             };
             $(".ui-dialog-custom-box").on('click', function(e) {
                 e.stopPropagation();
@@ -24,9 +22,8 @@
                     e.preventDefault();
                 }
             });
-            callback;
         },
-        tipShow: function(tipTxts, callback) {
+        tipShow: function(tipTxts) {
             var tipObj = $('<div class="ui-dialog"><section class="tips">' + tipTxts + '</section></div>');
             tipObj.appendTo("body").show();
             setTimeout(function() {
@@ -37,9 +34,8 @@
                     e.preventDefault();
                 }
             });
-            callback;
         },
-        confirm: function(options, callback) {
+        confirm: function(options) {
             var defaultVal = {
                 isHeader: true,
                 herderColor: '#eee',
@@ -91,7 +87,6 @@
                 $(this).find(".ui-dialog-confirm-box").parent().remove();
                 return false;
             });
-            callback;
         }
     };
 });
